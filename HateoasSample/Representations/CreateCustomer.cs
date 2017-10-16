@@ -1,8 +1,7 @@
-﻿namespace HateoasSample.Controllers
+﻿namespace HateoasSample.Representations
 {
     public class CreateCustomer
     {
-        public string Title { get; set; }
-        public string Author { get; set; }
+        public string Name { get; set; }
     }
 }

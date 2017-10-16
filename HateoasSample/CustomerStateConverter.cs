@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Migrap.AspNetCore.Hateoas;
 using HateoasSample.Representations;
 using Migrap.AspNetCore.Hateoas.Siren.Core;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -14,10 +13,7 @@ namespace HateoasSample
     {
         public Task<object> ConvertAsync(StateConverterContext context)
         {
-            var path = context.HttpContext.Request.GetDisplayUrl();
-
             var urlHelper = context.HttpContext.RequestServices.GetRequiredService<IUrlHelper>();
-
             var customer = context.Object as Customer;
 
             var actions = new List<Action>();
@@ -26,7 +22,7 @@ namespace HateoasSample
                 Name = "delete",
                 Title = "Delete Customer",
                 Method = "DELETE",
-                Href = urlHelper.Action("delete", "customers"),
+                Href = urlHelper.RouteUrl("DeleteCustomer", new RouteValueDictionary() { { "id", customer.Id } }),
             });
 
             if (customer.PhoneLine == null)
@@ -36,21 +32,18 @@ namespace HateoasSample
                     Name = "add phoneline",
                     Title = "Add PhoneLine",
                     Method = "POST",
-                    Href = urlHelper.RouteUrl("AddPhoneLine")
+                    Href = urlHelper.RouteUrl("AddPhoneLine", new RouteValueDictionary() { { "id", customer.Id } })
                 });
             }
 
             if (customer.PhoneLine != null)
             {
-                var routeDictionary = new RouteValueDictionary();
-                routeDictionary["phoneLineId"] = customer.PhoneLine.Id;
-
                 actions.Add(new Action
                 {
                     Name = "delete phoneline",
                     Title = "Delete PhoneLine",
                     Method = "DELETE",
-                    Href = urlHelper.RouteUrl("DeletePhoneLine", routeDictionary)
+                    Href = urlHelper.RouteUrl("DeletePhoneLine", new RouteValueDictionary() { { "phoneLineId", customer.PhoneLine.Id } }),
                 });
             }
 
@@ -58,7 +51,7 @@ namespace HateoasSample
             {
                 Class = new Class { "customer" },
                 Properties = customer,
-                Href = $"{path}",
+                Href = urlHelper.RouteUrl("GetCustomer", new RouteValueDictionary() { { "id", customer.Id } }),
                 Actions = new Actions(actions)
             };
 

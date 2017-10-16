@@ -42,6 +42,19 @@ namespace HateoasSample.Data
             return this.customers.FirstOrDefault(x => x.Id == id);
         }
 
+        public Customer Add(CreateCustomer createCustomer)
+        {
+            var customer = new Customer
+            {
+                Id = Guid.NewGuid(),
+                Name = createCustomer.Name
+            };
+
+            this.customers.Add(customer);
+
+            return customer;
+        }
+
         public void Delete(Guid id)
         {
             this.customers.Remove(this.Get(id));

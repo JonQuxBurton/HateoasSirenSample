@@ -22,7 +22,7 @@ namespace HateoasSample.Controllers
             return customersDataStore.GetAll();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCustomer")]
         public Customer Get(Guid id)
         {
             return customersDataStore.Get(id);
@@ -31,11 +31,12 @@ namespace HateoasSample.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] CreateCustomer createCustomer)
         {
-            return Ok();
-            //return new CreatedAtRouteResult();
+            var newCustomer = this.customersDataStore.Add(createCustomer);
+
+            return new CreatedAtRouteResult("GetCustomer", new { controller = "customers", id = newCustomer.Id }, newCustomer);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "DeleteCustomer")]
         public IActionResult Delete(Guid id)
         {
             customersDataStore.Delete(id);
