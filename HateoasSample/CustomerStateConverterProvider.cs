@@ -1,10 +1,10 @@
 ﻿using HateoasSample.Representations;
+using HateoasSirenSample;
+using HateoasSirenSample.Representations;
 using Migrap.AspNetCore.Hateoas;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace HateoasSample
 {
@@ -15,6 +15,11 @@ namespace HateoasSample
             if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
+            }
+
+            if (typeof(Root).IsAssignableFrom(context.ObjectType))
+            {
+                return new RootStateConverter();
             }
 
             if (typeof(IEnumerable<Customer>).IsAssignableFrom(context.ObjectType))

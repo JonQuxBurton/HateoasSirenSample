@@ -16,7 +16,7 @@ namespace HateoasSample.Controllers
             this.customersDataStore = customersDataStore;
         }
 
-        [HttpGet]
+        [HttpGet("", Name = "GetCustomers")]
         public IEnumerable<Customer> Get()
         {
             return customersDataStore.GetAll();
