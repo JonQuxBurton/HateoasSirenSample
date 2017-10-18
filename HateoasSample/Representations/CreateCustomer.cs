@@ -1,4 +1,4 @@
-﻿namespace HateoasSample.Representations
+﻿namespace HateoasSirenSample.Representations
 {
     public class CreateCustomer
     {

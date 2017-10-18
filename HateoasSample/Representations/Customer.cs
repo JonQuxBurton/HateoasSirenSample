@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HateoasSample.Representations
+namespace HateoasSirenSample.Representations
 {
     public class Customer
     {

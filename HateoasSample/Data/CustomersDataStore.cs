@@ -1,9 +1,9 @@
-﻿using HateoasSample.Representations;
+﻿using HateoasSirenSample.Representations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HateoasSample.Data
+namespace HateoasSirenSample.Data
 {
     public class CustomersDataStore : ICustomersDataStore
     {

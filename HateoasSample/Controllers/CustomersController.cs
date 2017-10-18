@@ -1,10 +1,10 @@
-﻿using HateoasSample.Data;
-using HateoasSample.Representations;
+﻿using HateoasSirenSample.Data;
+using HateoasSirenSample.Representations;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 
-namespace HateoasSample.Controllers
+namespace HateoasSirenSample.Controllers
 {
     [Route("customers")]
     public class CustomersController : Controller

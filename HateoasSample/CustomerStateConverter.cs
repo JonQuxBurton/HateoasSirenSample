@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Migrap.AspNetCore.Hateoas;
-using HateoasSample.Representations;
+using HateoasSirenSample.Representations;
 using Migrap.AspNetCore.Hateoas.Siren.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
-namespace HateoasSample
+namespace HateoasSirenSample
 {
     public class CustomerStateConverter : IStateConverter
     {

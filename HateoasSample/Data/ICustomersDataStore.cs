@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using HateoasSample.Representations;
+using HateoasSirenSample.Representations;
 
-namespace HateoasSample.Data
+namespace HateoasSirenSample.Data
 {
     public interface ICustomersDataStore
     {

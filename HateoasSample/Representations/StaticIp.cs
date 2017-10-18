@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HateoasSample.Representations
+namespace HateoasSirenSample.Representations
 {
     public class StaticIp
     {
