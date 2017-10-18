@@ -60,27 +60,35 @@ namespace HateoasSirenSample.Controllers
             return new NoContentResult();
         }
 
-        [HttpPost("{id}/broadbands")]
-        public IActionResult AddBroadband()
+        [HttpPost("{id}/broadbands", Name = "AddBroadband")]
+        public IActionResult AddBroadband(Guid id)
         {
+            this.customersDataStore.AddBroadband(id);
+
             return Ok();
         }
 
-        [HttpDelete("{id}/broadbands/{broadbandId}")]
-        public IActionResult DeleteBroadband()
+        [HttpDelete("{id}/broadbands/{broadbandId}", Name = "DeleteBroadband")]
+        public IActionResult DeleteBroadband(Guid id, Guid broadbandId)
         {
+            this.customersDataStore.DeleteBroadband(id, broadbandId);
+
             return new NoContentResult();
         }
 
-        [HttpPost("{id}/staticips")]
-        public IActionResult AddStaticIp()
+        [HttpPost("{id}/staticips", Name = "AddStaticIp")]
+        public IActionResult AddStaticIp(Guid id)
         {
+            this.customersDataStore.AddStaticIp(id);
+
             return Ok();
         }
 
-        [HttpPost("{id}/staticips")]
-        public IActionResult DeleteStaticIp()
+        [HttpDelete("{id}/staticips", Name = "DeleteStaticIp")]
+        public IActionResult DeleteStaticIp(Guid id, Guid staticIpId)
         {
+            this.customersDataStore.DeleteStaticIp(id, staticIpId);
+
             return Ok();
         }
     }

@@ -9,6 +9,7 @@ namespace HateoasSirenSample.Data
     {
         private List<Customer> customers;
         private int phoneLineCounter = 0;
+        private Random random  = new Random();
 
         public CustomersDataStore()
         {
@@ -72,6 +73,34 @@ namespace HateoasSirenSample.Data
         public void DeletePhoneLine(Guid customerId, Guid phoneLineId)
         {
             this.Get(customerId).PhoneLine = null;
+        }
+
+        public void AddBroadband(Guid id)
+        {
+            this.Get(id).Broadband = new Broadband()
+            {
+                Id = Guid.NewGuid(),
+                Speed = random.Next(1, 20)
+            };
+        }
+
+        public void DeleteBroadband(Guid customerId, Guid broadbandId)
+        {
+            this.Get(customerId).Broadband = null;
+        }
+
+        public void AddStaticIp(Guid id)
+        {
+            this.Get(id).StaticIp = new StaticIp()
+            {
+                Id = Guid.NewGuid(),
+                Value = $"{random.Next(0, 255)}.{random.Next(0, 255)}.{random.Next(0, 255)}.{random.Next(0, 255)}"
+            };
+        }
+
+        public void DeleteStaticIp(Guid customerId, Guid staticIpId)
+        {
+            this.Get(customerId).StaticIp = null;
         }
     }
 }

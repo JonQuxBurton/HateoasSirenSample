@@ -35,16 +35,57 @@ namespace HateoasSirenSample
                     Href = urlHelper.RouteUrl("AddPhoneLine", new RouteValueDictionary() { { "id", customer.Id } })
                 });
             }
-
-            if (customer.PhoneLine != null)
+            else 
             {
                 actions.Add(new Action
                 {
                     Name = "delete phoneline",
                     Title = "Delete PhoneLine",
                     Method = "DELETE",
-                    Href = urlHelper.RouteUrl("DeletePhoneLine", new RouteValueDictionary() { { "phoneLineId", customer.PhoneLine.Id } }),
+                    Href = urlHelper.RouteUrl("DeletePhoneLine", new RouteValueDictionary() { { "id", customer.Id }, { "phoneLineId", customer.PhoneLine.Id } }),
                 });
+
+                if (customer.Broadband == null)
+                {
+                    actions.Add(new Action
+                    {
+                        Name = "add broadband",
+                        Title = "Add Broadband",
+                        Method = "POST",
+                        Href = urlHelper.RouteUrl("AddBroadband", new RouteValueDictionary() { { "phoneLineId", customer.PhoneLine.Id } }),
+                    });
+                }
+                else
+                {
+                    actions.Add(new Action
+                    {
+                        Name = "delete broadband",
+                        Title = "Delete broadband",
+                        Method = "DELETE",
+                        Href = urlHelper.RouteUrl("DeleteBroadband", new RouteValueDictionary() { { "id", customer.Id }, { "broadbandId", customer.Broadband.Id } }),
+                    });
+
+                    if (customer.StaticIp == null)
+                    {
+                        actions.Add(new Action
+                        {
+                            Name = "add static ip",
+                            Title = "Add Static IP",
+                            Method = "POST",
+                            Href = urlHelper.RouteUrl("AddStaticIp", new RouteValueDictionary() { { "id", customer.Id } }),
+                        });
+                    }
+                    else
+                    {
+                        actions.Add(new Action
+                        {
+                            Name = "delete static ip",
+                            Title = "Delete Static IP",
+                            Method = "DELETE",
+                            Href = urlHelper.RouteUrl("DeleteStaticIp", new RouteValueDictionary() { { "id", customer.Id }, { "staticIpId", customer.StaticIp.Id } }),
+                        });
+                    }
+                }
             }
 
             var document = new Document
