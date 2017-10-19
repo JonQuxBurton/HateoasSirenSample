@@ -6,7 +6,7 @@ using Migrap.AspNetCore.Hateoas.Siren.Core;
 using System.Linq;
 using Microsoft.AspNetCore.Http.Extensions;
 
-namespace HateoasSirenSample
+namespace HateoasSirenSample.Converters
 {
     public class CustomerCollectionStateConverter : IStateConverter
     {

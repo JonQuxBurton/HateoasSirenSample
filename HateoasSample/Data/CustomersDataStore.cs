@@ -61,13 +61,17 @@ namespace HateoasSirenSample.Data
             this.customers.Remove(this.Get(id));
         }
 
-        public void AddPhoneLine(Guid id)
+        public PhoneLine AddPhoneLine(Guid id)
         {
-            this.Get(id).PhoneLine = new PhoneLine()
+            var phoneLine = new PhoneLine()
             {
                 Id = Guid.NewGuid(),
                 PhoneNumber = $"0114{(phoneLineCounter++).ToString("D7")}"
             };
+
+            this.Get(id).PhoneLine = phoneLine;
+
+            return phoneLine;
         }
 
         public void DeletePhoneLine(Guid customerId, Guid phoneLineId)
@@ -75,13 +79,17 @@ namespace HateoasSirenSample.Data
             this.Get(customerId).PhoneLine = null;
         }
 
-        public void AddBroadband(Guid id)
+        public Broadband AddBroadband(Guid id)
         {
-            this.Get(id).Broadband = new Broadband()
+            var broadband = new Broadband()
             {
                 Id = Guid.NewGuid(),
                 Speed = random.Next(1, 20)
             };
+
+            this.Get(id).Broadband = broadband;
+
+            return broadband;
         }
 
         public void DeleteBroadband(Guid customerId, Guid broadbandId)
@@ -89,13 +97,17 @@ namespace HateoasSirenSample.Data
             this.Get(customerId).Broadband = null;
         }
 
-        public void AddStaticIp(Guid id)
+        public StaticIp AddStaticIp(Guid id)
         {
-            this.Get(id).StaticIp = new StaticIp()
+            var newStaticIp = new StaticIp()
             {
                 Id = Guid.NewGuid(),
                 Value = $"{random.Next(0, 255)}.{random.Next(0, 255)}.{random.Next(0, 255)}.{random.Next(0, 255)}"
             };
+
+            this.Get(id).StaticIp = newStaticIp;
+
+            return newStaticIp;
         }
 
         public void DeleteStaticIp(Guid customerId, Guid staticIpId)

@@ -1,14 +1,12 @@
 ﻿using HateoasSirenSample.Representations;
-using HateoasSirenSample;
-using HateoasSirenSample.Representations;
 using Migrap.AspNetCore.Hateoas;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace HateoasSirenSample
+namespace HateoasSirenSample.Converters
 {
-    public class CustomerStateConverterProvider : IStateConverterProvider
+    public class StateConverterProvider : IStateConverterProvider
     {
         public IStateConverter CreateConverter(StateConverterProviderContext context)
         {
@@ -30,6 +28,21 @@ namespace HateoasSirenSample
             if (typeof(Customer).IsAssignableFrom(context.ObjectType))
             {
                 return new CustomerStateConverter();
+            }
+
+            if (typeof(PhoneLine).IsAssignableFrom(context.ObjectType))
+            {
+                return new PhoneLineStateConverter();
+            }
+
+            if (typeof(Broadband).IsAssignableFrom(context.ObjectType))
+            {
+                return new BroadbandStateConverter();
+            }
+
+            if (typeof(StaticIp).IsAssignableFrom(context.ObjectType))
+            {
+                return new StaticIpStateConverter();
             }
 
             return null;

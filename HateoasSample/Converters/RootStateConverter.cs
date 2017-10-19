@@ -8,7 +8,7 @@ using Migrap.AspNetCore.Hateoas.Siren.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HateoasSirenSample
+namespace HateoasSirenSample.Converters
 {
     public class RootStateConverter : IStateConverter
     {

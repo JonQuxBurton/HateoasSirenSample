@@ -47,9 +47,9 @@ namespace HateoasSirenSample.Controllers
         [HttpPost("{id}/phonelines", Name = "AddPhoneLine")]
         public IActionResult AddPhoneLine(Guid id)
         {
-            this.customersDataStore.AddPhoneLine(id);
+            var newCustomer = this.customersDataStore.AddPhoneLine(id);
 
-            return Ok();
+            return new OkObjectResult(newCustomer);
         }
 
         [HttpDelete("{id}/phonelines/{phoneLineId}", Name = "DeletePhoneLine")]
@@ -63,9 +63,9 @@ namespace HateoasSirenSample.Controllers
         [HttpPost("{id}/broadbands", Name = "AddBroadband")]
         public IActionResult AddBroadband(Guid id)
         {
-            this.customersDataStore.AddBroadband(id);
+            var broadband = this.customersDataStore.AddBroadband(id);
 
-            return Ok();
+            return new OkObjectResult(broadband);
         }
 
         [HttpDelete("{id}/broadbands/{broadbandId}", Name = "DeleteBroadband")]
@@ -79,9 +79,9 @@ namespace HateoasSirenSample.Controllers
         [HttpPost("{id}/staticips", Name = "AddStaticIp")]
         public IActionResult AddStaticIp(Guid id)
         {
-            this.customersDataStore.AddStaticIp(id);
+            var staticIp = this.customersDataStore.AddStaticIp(id);
 
-            return Ok();
+            return new OkObjectResult(staticIp);
         }
 
         [HttpDelete("{id}/staticips", Name = "DeleteStaticIp")]

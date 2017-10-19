@@ -10,11 +10,11 @@ namespace HateoasSirenSample.Data
         Customer Add(CreateCustomer createCustomer);
         Customer Get(Guid id);
         void Delete(Guid id);
-        void AddPhoneLine(Guid id);
+        PhoneLine AddPhoneLine(Guid id);
         void DeletePhoneLine(Guid customerId, Guid phoneLineId);
-        void AddBroadband(Guid id);
+        Broadband AddBroadband(Guid id);
         void DeleteBroadband(Guid customerId, Guid broadbandId);
-        void AddStaticIp(Guid id);
+        StaticIp AddStaticIp(Guid id);
         void DeleteStaticIp(Guid customerId, Guid staticIpId);
     }
 }

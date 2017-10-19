@@ -8,6 +8,7 @@ using HateoasSirenSample.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
+using HateoasSirenSample.Converters;
 
 namespace HateoasSirenSample
 {
@@ -36,7 +37,7 @@ namespace HateoasSirenSample
             services.AddScoped<IActionContextAccessor, ActionContextAccessor>();
             services.AddMvc(options => {
                 }).AddSirenOptions(options => {
-                    options.StateConverters.Add(new CustomerStateConverterProvider());
+                    options.StateConverters.Add(new StateConverterProvider());
             });
 
             services.AddSingleton<ICustomersDataStore, CustomersDataStore>();

@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
-namespace HateoasSirenSample
+namespace HateoasSirenSample.Converters
 {
     public class CustomerStateConverter : IStateConverter
     {
