@@ -34,7 +34,7 @@ The actions available are:
 
 Add a PhoneLine (action [add phoneline])
 ```
-curl -X POST http://localhost:55877/customers/60c70bda-d40b-4ca5-9a60-d4ed7c95e7a0/phonelines -H "Accept: application/vnd.siren+json"
+curl -X POST http://localhost:55877/customers/60c70bda-d40b-4ca5-9a60-d4ed7c95e7a0/phonelines -H "Accept: application/vnd.siren+json" -d {}
 ```
 ---
 
@@ -52,7 +52,7 @@ Now the actions available are:
 
 Add Broadband (action [add broadband])
 ```
-curl -X POST http://localhost:55877/customers/60c70bda-d40b-4ca5-9a60-d4ed7c95e7a0/broadbands?phoneLineId=d7f83dfb-001d-4b62-a556-571a4beacc31 -H "Accept: application/vnd.siren+json"
+curl -X POST http://localhost:55877/customers/60c70bda-d40b-4ca5-9a60-d4ed7c95e7a0/broadbands?phoneLineId=d7f83dfb-001d-4b62-a556-571a4beacc31 -H "Accept: application/vnd.siren+json" -d {}
 ```
 ---
 
@@ -72,7 +72,7 @@ Now the actions available are:
 
 Add a Static IP (action [add static ip])
 ```
-curl -X POST http://localhost:55877/customers/60c70bda-d40b-4ca5-9a60-d4ed7c95e7a0/staticips -H "Accept: application/vnd.siren+json"
+curl -X POST http://localhost:55877/customers/60c70bda-d40b-4ca5-9a60-d4ed7c95e7a0/staticips -H "Accept: application/vnd.siren+json" -d {}
 ```
 ---
 
