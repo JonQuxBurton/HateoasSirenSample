@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Migrap.AspNetCore.Hateoas;
 using Migrap.AspNetCore.Hateoas.Siren.Core;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace HateoasSirenSample.Converters
@@ -18,22 +17,15 @@ namespace HateoasSirenSample.Converters
             var root= context.Object as Root;
             var path = context.HttpContext.Request.GetDisplayUrl();
 
-            var actions = new List<Action>();
-            actions.Add(new Action
-            {
-                Name = "getCustomers",
-                Title = "Get Customers",
-                Method = "GET",
-                Href = urlHelper.RouteUrl("GetCustomers", new RouteValueDictionary(), "http"),
-            });
-
             var document = new Document
             {
                 Class = new Class { "root" },
                 Properties = root,
                 Href = path,
-                Links = new Links() { new Link() { Href = path, Rel = new Rel() { "self" } } },
-                Actions = new Actions(actions)
+                Links = new Links() {
+                    new Link() { Rel = new Rel() { "self" }, Href = path },
+                    new Link() { Rel = new Rel() { "customers" }, Href = urlHelper.AbsoluteRouteUrl("GetCustomers", new RouteValueDictionary()) },
+                }
             };
 
             return Task.FromResult<object>(document);

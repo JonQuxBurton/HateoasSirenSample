@@ -22,7 +22,7 @@ namespace HateoasSirenSample.Converters
                 Name = "delete",
                 Title = "Delete Customer",
                 Method = "DELETE",
-                Href = urlHelper.RouteUrl("DeleteCustomer", new RouteValueDictionary() { { "id", customer.Id } }),
+                Href = new Href(urlHelper.AbsoluteRouteUrl("DeleteCustomer", new RouteValueDictionary() { { "id", customer.Id } }), System.UriKind.Absolute),
             });
 
             if (customer.PhoneLine == null)
@@ -32,17 +32,18 @@ namespace HateoasSirenSample.Converters
                     Name = "add phoneline",
                     Title = "Add PhoneLine",
                     Method = "POST",
-                    Href = urlHelper.RouteUrl("AddPhoneLine", new RouteValueDictionary() { { "id", customer.Id } }, "http")
+                    Href = new Href(urlHelper.AbsoluteRouteUrl("AddPhoneLine", new RouteValueDictionary() { { "id", customer.Id } }), System.UriKind.Absolute),
+                    Fields = new Fields(new[] { new Field() { Name = "PhoneNumber", Type = "text" } })
                 });
             }
-            else 
+            else
             {
                 actions.Add(new Action
                 {
                     Name = "delete phoneline",
                     Title = "Delete PhoneLine",
                     Method = "DELETE",
-                    Href = urlHelper.RouteUrl("DeletePhoneLine", new RouteValueDictionary() { { "id", customer.Id }, { "phoneLineId", customer.PhoneLine.Id } }, "http"),
+                    Href = new Href(urlHelper.AbsoluteRouteUrl("DeletePhoneLine", new RouteValueDictionary() { { "id", customer.Id }, { "phoneLineId", customer.PhoneLine.Id } }), System.UriKind.Absolute),
                 });
 
                 if (customer.Broadband == null)
@@ -52,7 +53,7 @@ namespace HateoasSirenSample.Converters
                         Name = "add broadband",
                         Title = "Add Broadband",
                         Method = "POST",
-                        Href = urlHelper.RouteUrl("AddBroadband", new RouteValueDictionary() { { "phoneLineId", customer.PhoneLine.Id } }, "http"),
+                        Href = new Href(urlHelper.AbsoluteRouteUrl("AddBroadband", new RouteValueDictionary() { { "id", customer.Id } }), System.UriKind.Absolute),
                     });
                 }
                 else
@@ -62,7 +63,7 @@ namespace HateoasSirenSample.Converters
                         Name = "delete broadband",
                         Title = "Delete broadband",
                         Method = "DELETE",
-                        Href = urlHelper.RouteUrl("DeleteBroadband", new RouteValueDictionary() { { "id", customer.Id }, { "broadbandId", customer.Broadband.Id } }, "http"),
+                        Href = new Href(urlHelper.AbsoluteRouteUrl("DeleteBroadband", new RouteValueDictionary() { { "id", customer.Id }, { "broadbandId", customer.Broadband.Id } }), System.UriKind.Absolute),
                     });
 
                     if (customer.StaticIp == null)
@@ -72,7 +73,7 @@ namespace HateoasSirenSample.Converters
                             Name = "add static ip",
                             Title = "Add Static IP",
                             Method = "POST",
-                            Href = urlHelper.RouteUrl("AddStaticIp", new RouteValueDictionary() { { "id", customer.Id } }, "http"),
+                            Href = new Href(urlHelper.AbsoluteRouteUrl("AddStaticIp", new RouteValueDictionary() { { "id", customer.Id } }), System.UriKind.Absolute),
                         });
                     }
                     else
@@ -82,7 +83,7 @@ namespace HateoasSirenSample.Converters
                             Name = "delete static ip",
                             Title = "Delete Static IP",
                             Method = "DELETE",
-                            Href = urlHelper.RouteUrl("DeleteStaticIp", new RouteValueDictionary() { { "id", customer.Id }, { "staticIpId", customer.StaticIp.Id } }, "http"),
+                            Href = new Href(urlHelper.AbsoluteRouteUrl("DeleteStaticIp", new RouteValueDictionary() { { "id", customer.Id }, { "staticIpId", customer.StaticIp.Id } }), System.UriKind.Absolute)
                         });
                     }
                 }
@@ -92,7 +93,7 @@ namespace HateoasSirenSample.Converters
             {
                 Class = new Class { "customer" },
                 Properties = customer,
-                Href = urlHelper.RouteUrl("GetCustomer", new RouteValueDictionary() { { "id", customer.Id } }, "http"),
+                Href = new Href(urlHelper.AbsoluteRouteUrl("GetCustomer", new RouteValueDictionary() { { "id", customer.Id } }), System.UriKind.Absolute),
                 Actions = new Actions(actions)
             };
 
